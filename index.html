@@ -16,8 +16,26 @@
 </head>
 <body>
   <h1>OAuth callback</h1>
-    <p class="big">Check the URL ☝</p>
-      
-    <iframe src="https://giphy.com/embed/NdKVEei95yvIY" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/mrw-smell-deskmate-NdKVEei95yvIY"></a></p>
+    <p class="big success">This value come from the URL ☝</p>
+    <p class="big" id="response"></p>
+    <iframe class="success" src="https://giphy.com/embed/NdKVEei95yvIY" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/mrw-smell-deskmate-NdKVEei95yvIY"></a></p>
+    <script>
+      const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+      });
+  
+      const code = params.code,
+            token = params.token;
+      let response;
+      if(code){
+        response = `Code: ${code}`;
+      }else if(token){
+        response = `Access token: ${token}`;
+      }else{
+        response = `This page is just for OAuth callbacks`;
+        document.querySelectorAll('.success').forEach(e => e.style="display:none")
+      }
+      document.getElementById('response').innerHTML = response;
+    </script>
 </body>
 </html>
