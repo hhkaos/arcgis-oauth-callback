@@ -24,13 +24,12 @@
         get: (searchParams, prop) => searchParams.get(prop),
       });
   
-      const code = params.code,
-            token = params.token;
       let response;
       if(code){
-        response = `Code: ${code}`;
-      }else if(token){
-        response = `Access token: ${token}`;
+        response = `Code:<br>${params.code}`;
+      }else if(window.location.hash){
+        const token = window.location.hash.split("&")[0].split("=")[1]
+        response = `Access token:<br>${params.code}`;
       }else{
         response = `This page is just for OAuth callbacks`;
         document.querySelectorAll('.success').forEach(e => e.style="display:none")
