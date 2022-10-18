@@ -12,12 +12,15 @@
     p{
       font-size:1.7rem;
     }
+    .regular{
+      font-size:1rem;
+    }
   </style>
 </head>
 <body>
   <h1>OAuth callback</h1>
-    <p class="big success">This value come from the URL ☝</p>
-    <p class="big" id="response"></p>
+    <p id="response"></p>
+    <p class="success">This value come from the URL ☝</p>
     <iframe class="success" src="https://giphy.com/embed/NdKVEei95yvIY" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/mrw-smell-deskmate-NdKVEei95yvIY"></a></p>
     <script>
       const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -25,11 +28,11 @@
       });
   
       let response;
-      if(code){
-        response = `Code:<br>${params.code}`;
+      if(params.code){
+        response = `Code:<br><span class="regular">${params.code}</span>`;
       }else if(window.location.hash){
         const token = window.location.hash.split("&")[0].split("=")[1]
-        response = `Access token:<br>${params.code}`;
+        response = `Access token:<br><span class="regular">${token}</span>`;
       }else{
         response = `This page is just for OAuth callbacks`;
         document.querySelectorAll('.success').forEach(e => e.style="display:none")
