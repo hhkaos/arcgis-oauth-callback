@@ -4,4 +4,4 @@ This repo is just to demo how to authenticate in ArcGIS using an "[ArcGIS identi
 
 Check the [Postman collection here](https://www.postman.com/esridevs/workspace/authentication-in-arcgis/overview)
 
-![](authentication-devsummit-europe-22-session.png)
+Demo used at Esri Developer Summits

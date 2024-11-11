@@ -15,11 +15,15 @@
     .regular{
       font-size:1rem;
     }
+    textarea{
+      width: 80%;
+      height: 80px;
+    } 
   </style>
 </head>
 <body>
   <h1>OAuth callback</h1>
-    <p id="response"></p>
+    <div id="response"></div>
     <p class="success">This value come from the URL ☝</p>
     <iframe class="success" src="https://giphy.com/embed/NdKVEei95yvIY" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/mrw-smell-deskmate-NdKVEei95yvIY"></a></p>
     <script>
@@ -29,10 +33,10 @@
   
       let response;
       if(params.code){
-        response = `Code:<br><span class="regular">${params.code}</span>`;
+        response = `Code:<br><textarea>${params.code}</textarea>`;
       }else if(window.location.hash){
         const token = window.location.hash.split("&")[0].split("=")[1]
-        response = `Access token:<br><span class="regular">${token}</span>`;
+        response = `Access token:<br><textarea>${params.code}</textarea>`;
       }else{
         response = `This page is just for OAuth callbacks`;
         document.querySelectorAll('.success').forEach(e => e.style="display:none")
