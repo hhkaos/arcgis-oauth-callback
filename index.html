@@ -36,7 +36,7 @@
         response = `Code:<br><textarea>${params.code}</textarea>`;
       }else if(window.location.hash){
         const token = window.location.hash.split("&")[0].split("=")[1]
-        response = `Access token:<br><textarea>${params.code}</textarea>`;
+        response = `Access token:<br><textarea>${token}</textarea>`;
       }else{
         response = `This page is just for OAuth callbacks`;
         document.querySelectorAll('.success').forEach(e => e.style="display:none")
